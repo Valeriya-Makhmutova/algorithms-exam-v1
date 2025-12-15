@@ -1,21 +1,34 @@
-def is_number(s):
+def is_number(value):
+    '''
+    Функция - предикат.
+    Определяет является ли числом переданное значение
+    
+    :param value: значение, 
+    которое нужно проверить, 
+    является ли оно числом (например, если число в виде строки)
+    '''
     try:
-        int(s)
+        int(value)
         return True
     except ValueError:
         return False
 
 
 def prepare_data(data):
-
+    """
+    Функция по обработки входных данных в удобную структуру в виде словаря
+   
+    :param data: полученные данные в сыром виде
+    """
     dict_data = {}
+    # Разделение по группам данных (cities, roads, requests)
     for elem in data:
         if elem.startswith("["):
             if elem[1:-1].lower() == 'cities':
                 dict_data[elem[1:-1].lower()] = {}
             else:
                 dict_data[elem[1:-1].lower()] = []
-
+    # Группировка в словарь остальных данных
     for elem in data:
         if elem[0] != '[' and not is_number(elem[0]):
             request = {}

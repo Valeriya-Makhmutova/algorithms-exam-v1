@@ -1,4 +1,12 @@
 def get_string(parameters):
+    '''
+    Функция для получения строки по параметрам.
+
+    :param parameters: параметры для построения строки:
+     head - название главного параметра
+     cities - города, участвующие в построении маршрута
+     values - значения всех парметров
+    '''
     head, cities, values = parameters
 
     if head == 'Д':
@@ -27,9 +35,16 @@ def get_string(parameters):
 
 
 def format_data(all_requests_data):
+    '''
+    Функция для форматирования данных результата
+
+    :param all_requests_data: полностью готовые данные для форматирования и вывода.
+    Сосотоят из данных 3 путей по параметрам 
+    + данные компромиссного маршрута для каждого запроса поиска маршрута.
+    '''
     result = []
     for request in all_requests_data:
-        all_paths = request['all_paths']  # несколько путей
+        all_paths = request['all_paths']
         for key, value in all_paths.items():
             data_formatter = []
 
